@@ -1,0 +1,354 @@
+Bỏ qua nội dung chính
+ Khảo sát về đóng gói Python năm 2025 hiện đã diễn ra!  Hãy tham gia khảo sát ngay
+PyPI
+Thực đơn 
+Tìm kiếm PyPI
+Tìm kiếm dự án
+Tìm kiếm
+cvdupdate 1.2.0
+pip cài đặt cvdupdateSao chép hướng dẫn PIP
+
+Phiên bản mới nhất
+Phát hành:Ngày 4 tháng 10 năm 2025
+
+Công cụ cập nhật cơ sở dữ liệu riêng tư ClamAV
+
+ Mô tả dự án
+ Chi tiết dự án
+ Lịch sử phát hành
+ Tải xuống tập tin
+Mô tả dự án
+Một công cụ để tải xuống và cập nhật cơ sở dữ liệu clamav và các tệp vá cơ sở dữ liệu nhằm mục đích lưu trữ bản sao cơ sở dữ liệu của riêng bạn.
+
+Bản quyền (C) 2021-2025 thuộc về Cisco Systems, Inc. và/hoặc các công ty liên kết. Bảo lưu mọi quyền.
+
+Phiên bản PyPI PyPI - Phiên bản Python  
+
+Về
+Công cụ này tải xuống cơ sở dữ liệu ClamAV mới nhất cùng với các tệp vá cơ sở dữ liệu mới nhất.
+
+Dự án này thay thế clamdownloader.pltập lệnh Perl của Frederic Vanden Poel, trước đây được cung cấp tại đây: https://www.clamav.net/documents/private-local-mirrors
+
+Chạy công cụ này thường xuyên tùy thích, nhưng nó sẽ chỉ tải xuống nội dung mới nếu có nội dung mới để tải xuống. Nếu bạn vô tình tải xuống quá thường xuyên (ví dụ: bằng cách sử dụng cvd clean allvà cvd updatenhiều lần), máy chủ cơ sở dữ liệu chính thức có thể từ chối yêu cầu tải xuống của bạn và một hoặc nhiều cơ sở dữ liệu có thể sẽ tạm dừng cho đến khi an toàn để thử lại.
+
+Yêu cầu
+Python 3.6 hoặc mới hơn.
+Kết nối Internet có bật DNS.
+Các gói Python sau đây. Chúng sẽ được cài đặt tự động nếu bạn sử dụng pip, nhưng có thể cần phải cài đặt thủ công nếu không:
+clickv7.0 hoặc mới hơn
+colorlogv6.7 hoặc mới hơn
+colorama
+requests
+dnspythonv2.1.0 hoặc mới hơn
+rangehttpserver
+Cài đặt
+Bạn có thể cài đặt cvdupdatetừ PyPI bằng cách sử dụng pip, hoặc bạn có thể sao chép kho lưu trữ Git của dự án và sử dụng pipđể cài đặt cục bộ.
+
+Cài đặt cvdupdatetừ PyPI:
+
+python3  -m  pip  install  --user  cvdupdate
+Cập nhật cài đặt của bạn
+Khi chạy cvd updateđể cập nhật cơ sở dữ liệu, nó cũng sẽ kiểm tra xem có phiên bản mới của cvdupdategói trên kho lưu trữ gói PyPI của Python hay không. Nếu có phiên bản mới hơn cvdupdate, bạn sẽ thấy thông báo nhắc bạn nâng cấp. Thông báo sẽ trông giống như thế này:
+
+WARNING You are running cvdupdate version: 1.1.0.
+WARNING There is a newer version on PyPI: 1.1.1. Please update!
+Để nâng cấp cvdupdategói thông qua PyPI, hãy chạy:
+
+python3  -m  pip  install  --user  --upgrade  cvdupdate
+Cách sử dụng cơ bản
+Sử dụng --helptùy chọn với bất kỳ cvdlệnh nào để được trợ giúp.
+
+cvd  --trợ giúp
+Mẹo : Bạn có thể không chạy được phím tắt cvdhoặc cvdupdatetrực tiếp nếu thư mục Python Scripts của bạn không nằm trong PATHbiến môi trường. Nếu gặp sự cố này và không muốn thêm thư mục Python Scripts vào đường dẫn, bạn có thể chạy CVD-Update như sau:
+
+python  -m  cvdupdate  --trợ giúp
+(tùy chọn) Bạn có thể tùy chỉnh nơi lưu trữ cơ sở dữ liệu:
+
+cvd  config set --dbdir < đường dẫn www của bạn >
+     
+Chạy lệnh này để tải xuống cơ sở dữ liệu mới nhất và các tệp vá CDIFF liên quan:
+
+ cập nhật
+ cvd
+Cơ sở dữ liệu đã tải xuống sẽ được lưu vào đó ~/.cvdupdate/databasetrừ khi bạn tùy chỉnh để sử dụng một thư mục khác.
+
+Cơ sở dữ liệu mới tải xuống sẽ thay thế phiên bản cơ sở dữ liệu trước đó, nhưng các tệp vá CDIFF sẽ tích lũy đến mức tối đa đã cấu hình trước khi bắt đầu xóa các CDIFF cũ (mặc định: 30 CDIFF). Bạn có thể cấu hình để giữ lại nhiều CDIFF hơn bằng cách chỉnh sửa thủ công cấu hình (mặc định: ~/.cvdupdate/config.json). Hành vi tương tự cũng áp dụng cho việc xoay vòng nhật ký CVD-Update.
+
+Chạy lệnh này để phục vụ thư mục cơ sở dữ liệu http://localhost:8000để bạn có thể kiểm tra bằng FreshClam.
+
+ phục vụ
+ cvd
+Lưu ý : cvd serveTính năng này không dành cho mục đích sử dụng chính thức, chỉ để thử nghiệm. Bạn có thể muốn sử dụng máy chủ HTTP mạnh mẽ hơn cho công việc chính thức.
+
+Cài đặt ClamAV nếu bạn chưa có và trong một cửa sổ terminal khác, hãy sửa đổi freshclam.conftệp của bạn. Thay thế:
+
+DatabaseMirror database.clamav.net
+... với:
+
+DatabaseMirror http://localhost:8000
+Mẹo : Cài đặt mặc định trên Linux/Unix được đặt freshclam.conftrong /usr/local/etc/freshclam.conf. Nếu không có, bạn có thể cần tạo nó bằng cách sử dụng freshclam.conf.samplelàm mẫu.
+
+Bây giờ, hãy chạy freshclam -vhoặc freshclam.exe -vđể xem điều gì xảy ra. Bạn sẽ thấy FreshClam cập nhật thành công thư mục cơ sở dữ liệu của nó từ máy chủ cơ sở dữ liệu riêng của bạn.
+
+Chạy cvd updatethường xuyên tùy theo nhu cầu. Có thể dùng vào cronviệc gì đó.
+
+Mẹo : Mỗi lệnh đều hỗ trợ chế độ --verbose( -V), thường cung cấp thêm chi tiết về những gì đang diễn ra bên trong.
+
+Ví dụ về Cron
+Cron là lựa chọn phổ biến để tự động hóa các tác vụ thường xuyên trên hệ thống Linux/Unix.
+
+Mở một thiết bị đầu cuối chạy dưới quyền người dùng mà bạn muốn CVD-Update chạy dưới quyền đó, thực hiện như sau:
+
+crontab  -e
+Nhấn iđể chèn văn bản mới và thêm dòng này:
+
+30  */4  *  *  *  /bin/sh  -c "~/.local/bin/cvd cập nhật &> /dev/null" 
+Hoặc thay vì ~/, bạn có thể làm như sau, thay thế usernamebằng tên người dùng của bạn:
+
+30  */4  *  *  *  /bin/sh  -c "/home/username/.local/bin/cvd cập nhật &> /dev/null" 
+Nhấn , sau đó nhập :wqvà nhấn để ghi tệp vào đĩa và thoát.
+
+Về các cài đặt này :
+
+Tôi đã chọn 30 */4 * * *chạy ở phút thứ 30 sau mỗi 4 giờ. CVD-Update sử dụng kiểm tra DNS để kiểm tra phiên bản trước khi tải xuống bất kỳ tệp nào, giống như FreshClam. Việc chạy CVD-Update nhiều hơn một lần mỗi ngày sẽ không phải là vấn đề.
+
+CVD-Update sẽ ghi nhật ký vào ~/.cvdupdate/logsthư mục, đó là lý do tại sao tôi chỉ định stdoutvà thay vì một tệp nhật ký. Bạn có thể sử dụng lệnh để tùy chỉnh thư mục nhật ký nếu muốn, hoặc chuyển hướng và stderrđến một tệp nhật ký nếu bạn muốn tất cả trong một nhật ký thay vì các nhật ký hàng ngày riêng biệt./dev/nullcvd config setstdoutstderr
+
+Chức năng tùy chọn
+Sử dụng máy chủ DNS tùy chỉnh
+Cần có DNS để CVD-Update hoạt động bình thường (để thu thập bản ghi TXT chứa phiên bản định nghĩa cơ sở dữ liệu hiện tại). Bạn có thể chọn một máy chủ tên cụ thể để đảm bảo máy chủ tên đó được sử dụng khi truy vấn bản ghi TXT chứa phiên bản định nghĩa cơ sở dữ liệu hiện tại.
+
+Đặt máy chủ tên trong cấu hình. Ví dụ:
+
+cvd  config set --nameserver 208 .67.222.222
+   
+Đặt biến môi trường CVDUPDATE_NAMESERVER. Ví dụ:
+
+CVDUPDATE_NAMESERVER = "208.67.222.222" cập nhật
+  cvd 
+Biến môi trường sẽ được ưu tiên hơn cài đặt cấu hình máy chủ tên.
+
+Lưu ý: Cả hai tùy chọn đều có thể được sử dụng để cung cấp danh sách máy chủ tên phân cách bằng dấu phẩy để sử dụng cho mục đích giải quyết.
+
+Sử dụng proxy
+Tùy thuộc vào loại proxy của bạn, bạn có thể sử dụng CVD-Update với proxy của mình bằng cách chạy CVD-Update như sau:
+
+Đầu tiên, hãy thiết lập máy chủ tên miền tùy chỉnh để sử dụng proxy:
+
+cvd thiết lập  cấu hình --nameserver <proxy_ip>
+   
+Sau đó chạy CVD-Update như thế này:
+
+http_proxy = http://<proxy_ip>:<proxy_port> https_proxy = http://<proxy_ip>:<proxy_port> cập nhật cvd -V
+    
+Hoặc tạo một tập lệnh để đóng gói lệnh gọi CVD-Update. Ví dụ như:
+
+#!/bin/bash 
+http_proxy = http://<proxy_ip>:<proxy_port>
+ xuất  http_proxy
+ https_proxy = http://<proxy_ip>:<proxy_port>
+ xuất  https_proxy 
+cvd  cập nhật  -V
+Lưu ý : CVD-Update hiện không hỗ trợ các proxy yêu cầu xác thực. Nếu quản trị viên mạng của bạn cho phép, bạn có thể khắc phục bằng cách cập nhật proxy để cho phép các yêu cầu HTTP không cần xác thực nếu User-Agent khớp với user-Agent CVD-Update cụ thể của bạn. User-Agent CVD-Update tuân theo định dạng CVDUPDATE/<version> (<uuid>)mà uuidlà duy nhất cho cài đặt của bạn và có thể được tìm thấy trong ~/.cvdupdate/state.jsontệp (hoặc ~/.cvdupdate/config.jsonđối với cvdupdate <=1.0.2). Xem https://github.com/Cisco-Talos/cvdupdate/issues/9 để biết thêm chi tiết.
+
+Việc bổ sung hỗ trợ xác thực proxy là cơ hội tốt để cộng đồng đóng góp cho dự án.
+
+Các tập tin và thư mục được tạo bởi CVD-Update
+Công cụ này dùng để tạo các thư mục sau:
+
+~/.cvdupdate
+~/.cvdupdate/logs
+~/.cvdupdate/databases
+Công cụ này tạo ra các tập tin sau:
+
+~/.cvdupdate/config.json
+~/.cvdupdate/state.json
+~/.cvdupdate/databases/<database>.cvd
+~/.cvdupdate/databases/<database>-<version>.cdiff
+~/.cvdupdate/logs/<date>.log
+Mẹo : Bạn có thể thiết lập tùy chỉnh databasevà logsthư mục bằng cvd config setlệnh. Có thể bạn sẽ muốn tùy chỉnh databasethư mục để trỏ đến thư mục máy chủ HTTP của mình www(hoặc tương đương). Lưu ý rằng nếu bạn đã tải cơ sở dữ liệu xuống thư mục cũ, bạn có thể muốn di chuyển chúng sang thư mục mới.
+
+Quan trọng : Nếu bạn muốn sử dụng đường dẫn cấu hình tùy chỉnh, bạn sẽ phải sử dụng nó trong mọi lệnh. Nếu bạn thấy ổn với việc sử dụng đường dẫn này ~/.cvdupdate/config.json, đừng lo lắng.
+
+Sử dụng bổ sung
+Làm quen với công cụ
+Làm quen với nhiều lệnh khác nhau bằng cách sử dụng --helptùy chọn.
+
+cvd  --help 
+cvd  config  --help 
+cvd  update  --help 
+cvd  add  --help 
+cvd  clean  --help
+In ra danh sách cơ sở dữ liệu hiện tại.
+
+ danh sách cvd  -V
+In cấu hình ra để xem nó trông như thế nào.
+
+hiển thị
+  cấu hình cvd 
+Thực hiện cập nhật
+Hãy thực hiện cập nhật, sử dụng "chế độ chi tiết" để bạn có thể cảm nhận được cách thức hoạt động của nó.
+
+ cập nhật cvd  -V
+Liệt kê lại các cơ sở dữ liệu:
+
+ danh sách cvd  -V
+In lại cấu hình để bạn có thể xem những thay đổi.
+
+hiển thị
+  cấu hình cvd 
+Và có lẽ bạn cũng nên xem qua thư mục cơ sở dữ liệu để tự mình kiểm tra.
+
+ls  ~/.cvdupdate/cơ sở dữ liệu
+Nếu bạn muốn, hãy xem nhật ký.
+
+ls  ~/.cvdupdate/logs 
+
+cat  ~/.cvdupdate/logs/*
+Thêm cơ sở dữ liệu bổ sung
+Có thể thêm một cơ sở dữ liệu bổ sung không nằm trong bộ cơ sở dữ liệu mặc định.
+
+cvd  thêm  linux.cvd  https://database.clamav.net/linux.cvd
+Liệt kê lại các cơ sở dữ liệu:
+
+ danh sách cvd  -V
+Phục vụ nó, Kiểm tra FreshClam
+Kiểm tra máy ảo của bạn bằng FreshClam trên cùng một máy tính.
+
+Công cụ này bao gồm --servetính năng lưu trữ thư mục cơ sở dữ liệu hiện tại trên http://localhost (cổng mặc định: 8000).
+
+Bạn có thể kiểm tra bằng cách chạy freshclamhoặc freshclam.execục bộ, nơi bạn đã cấu hình freshclam.confbằng:
+
+DatabaseMirror http://localhost:8000
+Sử dụng docker
+Xây dựng hình ảnh docker
+
+docker  build  .  --tag  cvdupdate:latest
+Chạy hình ảnh, sẽ tự động cập nhật cơ sở dữ liệu trong thư mục /srv/cvdupdatevà ghi nhật ký vào/var/log/cvdupdate
+
+docker  run  -d \ -v /srv/cvdupdate:/cvdupdate/database \ -v /var/log/cvdupdate:/cvdupdate/logs \ cvdupdate:latest
+ 
+    
+    
+  
+Chạy hình ảnh, sẽ tự động cập nhật cơ sở dữ liệu trong thư mục /srv/cvdupdate, ghi nhật ký vào /var/log/cvdupdatevà đặt chủ sở hữu của tệp thành người dùng có ID 1000
+
+docker  run  -d \ -v /srv/cvdupdate:/cvdupdate/database \ -v /var/log/cvdupdate:/cvdupdate/logs \ -e USER_ID = 1000 \ cvdupdate:latest
+ 
+    
+    
+    
+  
+Khoảng thời gian cập nhật mặc định là 30 */4 * * *(xem Ví dụ Cron )
+
+Bạn có thể truyền khoảng thời gian cập nhật tùy chỉnh vào biến môi trườngCRON
+
+Ví dụ - cập nhật hàng ngày vào lúc 00:00
+
+docker  run  -d \ -v /srv/cvdupdate:/cvdupdate/database \ -v /var/log/cvdupdate:/cvdupdate/logs \ -e CRON = '0 0 * * *' \ cvdupdate:mới nhất
+ 
+    
+    
+    
+  
+Sử dụng Docker Compose
+Docker compose.yamlđược cung cấp cho:
+
+Cập nhật thường xuyên ổ đĩa Docker bằng cơ sở dữ liệu ClamAV mới nhất.
+Cung cấp bản sao cơ sở dữ liệu trên cổng 8000 bằng máy chủ web Apache.
+Chỉnh sửa compose.yamltệp nếu bạn cần thay đổi các giá trị mặc định:
+
+Cổng 8000
+ID người dùng = 0
+CRON=30 */4 * * *
+Xây dựng
+docker  compose  build
+Bắt đầu
+docker  compose  up  -d
+Dừng lại
+docker  compose  down
+Tập sách
+Các ổ đĩa được định nghĩa trong compose.yamlvà sẽ được tự động tạo khi bạn chạydocker compose up
+
+DRIVER    VOLUME NAME
+local     cvdupdate_database
+local     cvdupdate_log
+Đóng góp
+Chúng tôi rất mong nhận được sự giúp đỡ của bạn. Có rất nhiều cách để đóng góp!
+
+Cộng đồng
+Tham gia cộng đồng ClamAV trên máy chủ trò chuyện Discord của ClamAV .
+
+Báo cáo sự cố
+Nếu bạn gặp sự cố với CVD-Update hoặc tài liệu CVD-Update, vui lòng gửi sự cố đến công cụ theo dõi sự cố GitHub của chúng tôi . Trước khi gửi, vui lòng kiểm tra xem đã có ai báo cáo sự cố chưa.
+
+Phát triển
+Nếu bạn tìm thấy lỗi và có thể tự sửa, hãy cân nhắc gửi bản sửa lỗi qua yêu cầu kéo . Chúng tôi rất cảm kích sự giúp đỡ của bạn.
+
+Nếu bạn muốn đóng góp cho dự án và chưa có ý tưởng cụ thể nào, vui lòng xem qua trình theo dõi sự cố của chúng tôi . Biết đâu bạn có thể sửa lỗi hoặc thêm một tính năng mới thú vị.
+
+Bằng cách gửi đóng góp cho dự án, bạn thừa nhận và đồng ý chuyển nhượng bản quyền cho Cisco Systems, Inc. Nếu bạn gửi một đóng góp quan trọng, chẳng hạn như tính năng hoặc khả năng mới hoặc một lượng lớn mã, bạn có thể được yêu cầu ký thỏa thuận cấp phép cộng tác viên, xác nhận rằng Cisco sẽ có giấy phép bản quyền và giấy phép bằng sáng chế, và bạn được ủy quyền đóng góp mã.
+
+Thiết lập phát triển
+Các bước sau đây nhằm mục đích giúp người dùng muốn đóng góp vào quá trình phát triển dự án CVD-Update bắt đầu.
+
+Tạo một nhánh của kho lưu trữ git CVD-Update , sau đó sao chép nhánh của bạn vào một thư mục cục bộ.
+
+Ví dụ:
+
+git  clone  https://github.com/<tên  người dùng của bạn>/cvdupdate.git
+Đảm bảo CVD-Update chưa được cài đặt. Nếu đã cài đặt, hãy gỡ cài đặt.
+
+python3  -m  pip  uninstall  cvdupdate
+Sử dụng pip để cài đặt CVD-Update ở chế độ "chỉnh sửa".
+
+python3  -m  pip  install  -e  --user  ./cvdupdate
+Sau khi cài đặt ở chế độ "chỉnh sửa", bất kỳ thay đổi nào bạn thực hiện đối với bản sao mã CVD-Update của mình sẽ có thể sử dụng ngay lập tức chỉ bằng cách chạy lệnh cvdupdate/ cvd.
+
+Chỉ đạo
+Dự án này hiện chưa chọn một văn bản Quy tắc Ứng xử cụ thể. Tuy nhiên, các thành viên được kỳ vọng sẽ hành xử chuyên nghiệp và tôn trọng. Hành vi thiếu tôn trọng hoặc không phù hợp sẽ không được dung thứ.
+
+Giấy phép
+CVD-Update được cấp phép theo Giấy phép Apache, Phiên bản 2.0 ("Giấy phép"). Bạn không được phép sử dụng dự án CVD-Update trừ khi tuân thủ theo Giấy phép.
+
+Bản sao của giấy phép có tại đây và cũng có sẵn trực tuyến tại apache.org .
+
+Trừ khi được yêu cầu bởi luật hiện hành hoặc được đồng ý bằng văn bản, phần mềm được phân phối theo Giấy phép này được phân phối "NGUYÊN TRẠNG", KHÔNG CÓ BẤT KỲ BẢO ĐẢM HOẶC ĐIỀU KIỆN NÀO, dù rõ ràng hay ngụ ý. Xem Giấy phép để biết ngôn ngữ cụ thể điều chỉnh các quyền và giới hạn theo Giấy phép.
+
+
+Giúp đỡ
+Cài đặt gói
+Đang tải lên các gói
+Hướng dẫn sử dụng
+Giữ lại tên dự án
+Câu hỏi thường gặp
+Giới thiệu về PyPI
+Blog PyPI
+Bảng điều khiển cơ sở hạ tầng
+Thống kê
+Logo và nhãn hiệu
+Các nhà tài trợ của chúng tôi
+Đóng góp cho PyPI
+Lỗi và phản hồi
+Đóng góp trên GitHub
+Dịch PyPI
+Nhà tài trợ PyPI
+Tín dụng phát triển
+Sử dụng PyPI
+Điều khoản dịch vụ
+Báo cáo sự cố bảo mật
+Quy tắc ứng xử
+Thông báo về quyền riêng tư
+Chính sách sử dụng được chấp nhận
+Trạng thái: Tất cả các hệ thống đều hoạt động 
+
+Được phát triển và duy trì bởi cộng đồng Python, dành cho cộng đồng Python.
+Hãy quyên góp ngay hôm nay!
+
+"PyPI", "Python Package Index" và các logo khối là các nhãn hiệu đã đăng ký của Python Software Foundation .
+
+© 2025 Python Software Foundation 
+Sơ đồ trang web
+
+Chuyển sang phiên bản máy tính để bàn
+Tiếng Anh tiếng Tây Ban Nha tiếng Pháp 日本語 người Bồ Đào Nha (Brasil) українська Ελληνικά Tiếng Đức 中文 (简体) 中文 (繁體) русский עברית Tiếng Esperanto 한국어
